@@ -136,13 +136,9 @@ Resources:
         Fn::Base64:
           Fn::Sub: |
             #!/bin/bash -xe
-            sudo yum install -y httpd
             sudo yum install -y docker
             sudo service docker start
-            sudo service httpd start
             sudo usermod -a -G docker ec2-user
-            docker info
-            docker run -d -p 8080:8080 -p 50000:50000 -v /var/jenkins_home:/var/jenkins_home --name jenkins jenkins
   InstanceSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
